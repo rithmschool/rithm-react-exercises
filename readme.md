@@ -1,0 +1,16 @@
+## React Exercises
+
+1.  [ES2015 Modules - Fruits](./01_es2015_modules_and_fruits)
+1.  [JSX Introduction](./02_jsx_introduction)
+1.  [Props - Pokedex and Todos](./03_pokedex_and_todos)
+1.  [State - Color Boxes and Coin Flip](./04_color_boxes_and_coin_flip)
+1.  [Events - Custom Link and Todos](./05_custom_link_and_todos)
+1.  [Forms - Div Maker and Todos](./06_div_maker_and_todos)
+1.  [Lifecycle Methods - Giphy Party](./07_giphy_party)
+1.  [CheeZJokes](./08_CheeZJokes_App)
+1.  [Testing with React](./09_react_testing)
+1.  [React Router Vending Machine](./10_react_router_vending_machine)
+1.  [React Router Calculator](./11_react_router_calculator)
+1.  [React Router Dog Finder](./12_react_router_dog_finder)
+1.  [React Router Color Factory](./13_react_router_color_factory)
+1.  [Redux Mood App](./14_redux_mood_app)
