@@ -15,38 +15,38 @@ The application should use `defaultProps` to get the data for the pokedex. Here 
   pokemon: [
     {
       id: 1,
-      name: "Charmander",
-      type: "fire",
+      name: 'Charmander',
+      type: 'fire',
       image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'
     },
     {
       id: 2,
-      name: "Squirtle",
-      type: "water",
+      name: 'Squirtle',
+      type: 'water',
       image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png'
     },
     {
       id: 3,
-      name: "Butterfree",
-      type: "flying",
+      name: 'Butterfree',
+      type: 'flying',
       image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png'
     },
     {
       id: 4,
-      name: "Rattata",
-      type: "normal",
+      name: 'Rattata',
+      type: 'normal',
       image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png'
     },
     {
       id: 5,
-      name: "Metapod",
-      type: "bug",
+      name: 'Metapod',
+      type: 'bug',
       image:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png'
     }
   ];
 }
@@ -56,4 +56,4 @@ The application should use `defaultProps` to get the data for the pokedex. Here 
 
 Create two components, `TodoList` and `Todo`. The `TodoList` component should contain an array called todos. The TodoList component should be responsible for listing all of the Todo components, which should each display the task necessary to complete.
 
-NOTE: for this part, please create a **separate branch**, as this exercise will build on itself over several days. By the end you'll have a basic Todo app working in React. This assignment will eventually be submitted as the solution to `08_react_todo_list`.
+NOTE: This exercise will build on itself over several days.
