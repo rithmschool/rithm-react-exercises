@@ -14,7 +14,6 @@ class App extends Component {
 
   handleClick = e => {
     if (this.state.linksDisabled) {
-      debugger;
       e.preventDefault();
     }
   };
