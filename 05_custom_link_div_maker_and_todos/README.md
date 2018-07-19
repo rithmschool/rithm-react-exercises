@@ -1,6 +1,6 @@
 ## Events and Forms in React
 
-### Part 1 - Review of Events ---> CustomLink 
+### Part 1 - Review of Events ---> CustomLink
 
 Create two components `CustomLink` and `App`. The `CustomLink` component should accept two props:
 
@@ -21,7 +21,7 @@ Create a new React application, which contains the following components:
 
 - `App` - this component should render the `NewBoxForm` and `BoxList` components. Place your state that contains all of the boxes here.
 - `NewBoxForm` - this component should render a form that allows you to when submitted, create a new `div`. You should be able to specify the `div`'s width, height, and background color. When the form is submitted, clear the input values.
-- `BoxList` - this component should render all of the `Box` components
+- `BoxList` - this component should render all of the `Box` components.
 - `Box`- this component should display a `div` with a background color, width and height based on the props passed to it.
 
 **BONUS** - When each `Box` component is displayed, add a button with a value of X next to each button that when clicked, removes that certain button. This will require you to pass a function down as props and figure out how to make sure you're deleting the correct todo.
@@ -32,8 +32,8 @@ Create a Todo App that allows users to see, add, edit, and remove todos. It shou
 
 - `App` - this component should render the `NewTodoForm` and `TodoList` components. Place your state that contains all of the todos here.
 - `NewTodoForm` - this component should render a form that allows you to when submitted, create a new todo. You should be able to specify a task for that todo.
-- `TodoList` - this component should render all of the `Todo` components
-- `Todo`- this component should display a `div` with the task of the todo
+- `TodoList` - this component should render all of the `Todo` components.
+- `Todo`- this component should display a `div` with the task of the todo.
 
 ### Part 4 - Todo App - Editing and Bonuses
 
@@ -41,7 +41,7 @@ It's time to edit some todos!
 
 - `TodoList` - this component should render all of the `Todo` and/or `EditableTodo` components.
 - Each `Todo` component should also display a button with the text "edit" that when clicked, displays the task as an `EditableTodo` component. There should also be a button with the text "X" that when clicked, removes the todo.
-- `EditableTodo`- this component should display a `form` with the task of the todo as an input and a button to submit the form. When the form is submitted, the task of the text should be updated and the form should be hidden (display the task using a `Todo` component instead of `EditableTodo`)
+- `EditableTodo`- this component should display a `form` with the task of the todo as an input and a button to submit the form. When the form is submitted, the task of the text should be updated and the form should be hidden (display the task using a `Todo` component instead of `EditableTodo`).
 
 **BONUS 1** - When each `Todo` component is displayed, add a button with the text of "Mark as completed". When this button is clicked, add a strike through the text of the todo.
 
