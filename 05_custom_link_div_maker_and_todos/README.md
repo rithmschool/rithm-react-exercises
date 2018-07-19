@@ -9,7 +9,7 @@ Create two components `CustomLink` and `App`. The `CustomLink` component should 
 
 The `CustomLink` component should render a link tag with an appropriate `href` and `text` coming from the props.
 
-Inside the `CustomLink` component, write a method called `openLink` which opens the `href` prop in a new window (set the `target` attribute to `"_blank"`) when the `CustomLink` component is clicked.
+Inside the `CustomLink` component, make sure that you set the `target` attribute to `"_blank"` so that when the `CustomLink` component is clicked, a new tab is opened with that `href`.
 
 The `App` component should render the `CustomLink` component(s), along with a button that when clicked, runs a function called `toggleDisablingLinks`, which disables all of the links. In other words, if you click on the button and then click on any of the links, nothing should happen. Clicking on the button again should re-enable the links.
 
