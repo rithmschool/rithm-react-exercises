@@ -13,8 +13,6 @@ Inside the `CustomLink` component, make sure that you set the `target` attribute
 
 The `App` component should render the `CustomLink` component(s), along with a button that when clicked, runs a function called `toggleDisablingLinks`, which disables all of the links. In other words, if you click on the button and then click on any of the links, nothing should happen. Clicking on the button again should re-enable the links.
 
-**BONUS** - instead of having an `openClick` function for each `CustomLink`, move it to the `App` component, and pass it down as a prop.
-
 ### Part 2 - Color Box Maker
 
 Create a new React application, which contains the following components:
