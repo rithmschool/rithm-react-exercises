@@ -12,7 +12,6 @@ export default class EditableTodo extends Component {
   collectInput = evt => {
     evt.preventDefault();
     this.props.updateTodo(this.state);
-    this.props.toggleEdit();
   };
   render() {
     return (

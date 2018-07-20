@@ -14,7 +14,7 @@ class App extends Component {
   toggleEditing = (id, newValue) => {
     const updatedTodos = this.state.todos.map(todo => {
       if (todo.id === id) {
-        todo.isEditing = newValue;
+        return { ...todo, isEditing: newValue };
       }
       return todo;
     });
@@ -23,7 +23,7 @@ class App extends Component {
   handleUpdate = (id, updatedTodo) => {
     const updatedTodos = this.state.todos.map(todo => {
       if (todo.id === id) {
-        todo.task = updatedTodo.task;
+        return { ...todo, task: updatedTodo.task, isEditing: false };
       }
       return todo;
     });
