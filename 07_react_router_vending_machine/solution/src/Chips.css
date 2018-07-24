@@ -1,0 +1,31 @@
+.Chips {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Chips button {
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  background-color: pink;
+}
+
+.Chips button:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.Chips button:active,
+.Chips button:focus {
+  outline: none;
+}
+
+.bag {
+  position: absolute;
+  z-index: -1;
+}
