@@ -1,6 +1,6 @@
 # React Router Color Factory
 
-The goal of this exercise will be to use React Router to build an app that lets you view colors and add new colors. It's basically a CR app on colors.
+The goal of this exercise will be to use React Router to build an app that lets you view colors and add new colors.
 
 **User Stories**.
 
@@ -10,8 +10,12 @@ The goal of this exercise will be to use React Router to build an app that lets 
 4.  As a user, when I submit my new color form, I am redirected to the colors index, and my new color appears at the top.
 5.  As a user, if I try to navigate to a color page that does not exist (e.g. `/colors/burrito`), I am redirected to the colors index page.
 6.  As a user, if I try to navigate to an invalid url (e.g. `/this-is-not-valid`), I am redirected to the colors index page.
+7.  Your app should have some styling.
 
-Your app should have some styling. As a bonus, persist your colors data in `localStorage`.
+**BONUS**
+
+1.  Make it so that the `/colors/new` route is protected, and you have to login to access it. (You can hard-code the correct login credentials for the sake of this exercise).
+1.  Persist your colors data in `localStorage`.
 
 Here's an idea of what your app could look like:
 

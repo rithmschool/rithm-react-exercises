@@ -1,9 +1,15 @@
 # React Router Dog Finder
 
-Earlier you saw an example of an app that used the HTML5 history api to build a single page app. ([Here's](https://github.com/rithmschool/history-example) a link.) In this exercise, your goal will be to refactor the app to use React Router!
+Build an app in which you have a single `Route` component that renders details on the dog - this details component should display a dog's information based on props passed to it.
 
-Try to build the app so that you have a single `Route` component that renders details on the dog - this details component should display a dog's information based on props passed to it.
+The routes look like this:
+
+- `/dogs` is the homepage and shows all three dogs
+- Clicking on a dog from the homepage takes you to that dog's route. For example clicking on Whiskey will take you to `/dogs/whiskey`.
+- `/` and every other endpoint not listed should redirect you to `/dogs`.
 
 Here's an image of what the app looks like. It should look the same once you've refactored it!
 
-![vending machine demo](./dog-finder.gif)
+![dog finder app](./dog-finder.gif)
+
+([Here's](https://github.com/rithmschool/history-example) a link to a vanilla JavaScript version using the HTML5 History API)
