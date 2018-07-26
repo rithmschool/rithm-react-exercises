@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import Dog from './Dog';
 import whiskeyPic from './images/whiskey.jpg';
 import hazelPic from './images/hazel.jpg';
