@@ -1,6 +1,6 @@
 # React Router Dog Finder
 
-Build an app in which you have a single `Route` component that renders details on the dog - this details component should display a dog's information based on props passed to it.
+Build an app that routes to different dogs and displays information on that dog when you're at that route.
 
 The routes look like this:
 

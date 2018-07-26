@@ -6,8 +6,9 @@ import hazelPic from './images/hazel.jpg';
 import tubbyPic from './images/tubby.jpg';
 
 class Dogs extends Component {
-  state = {
-    dogs: [
+  constructor(props) {
+    super(props);
+    this.dogs = [
       {
         name: 'whiskey',
         id: 0,
@@ -41,8 +42,8 @@ class Dogs extends Component {
           'Angelina hates Tubby'
         ]
       }
-    ]
-  };
+    ];
+  }
 
   render() {
     // if this component was rendered by the route /dogs/:name
@@ -50,7 +51,7 @@ class Dogs extends Component {
     if (this.props.match.params.name) {
       currentDog = this.props.match.params.name;
     }
-    return this.state.dogs.map(dog => (
+    return this.dogs.map(dog => (
       <Dog
         age={dog.age}
         currentDog={currentDog}
