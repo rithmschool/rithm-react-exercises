@@ -11,6 +11,8 @@ Your application should contain the following components:
 - PostList - should list the Post components
 - Post - should display the title and body of each post
 
+![Example](microblog.png)
+
 ### Part II - Title List
 
 Your boss loves what you've built so far, but there's just one more thing that needs to get done! Your boss would like you to add another component that `App` renders called `TitleList`, which simply displays a list of all the titles of the posts.
@@ -20,6 +22,8 @@ It also turns out your boss **also really likes Redux**.
 Move your list of posts from React state (from your App component) to Redux state (a store).
 
 You could move the state up, but this is great time to not have to make `App` contain any state! Using Redux and React-Redux, connect your `TodoList` and `TitleList` component so that they can render the list of posts.
+
+![Example with titles](microblog-titles.png)
 
 ### Part III - Deleting Titles
 
