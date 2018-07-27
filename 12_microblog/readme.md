@@ -39,3 +39,18 @@ Your boss is thrilled with the list of titles, but now there's just one more thi
 - Allow users to upvote posts
 - Allow users to downvote posts
 - Reorder posts based on their votes
+
+### Part V - Using a backend to store todos
+
+Your boss is so impressed with what you've built so far! It's now time to make sure you save your todos. Using the `backend` folder, fetch and store your todos using the API. You will need to use `redux-thunk` to handle asynchronous actions.
+
+### Part VI - Using a backend to store comments
+
+Now that you have posts working, try to add functionality for adding and removing comments with the API!
+
+### Part VII - Next Steps
+
+Add functionality on the backend to store votes for each post and allow upvotes/downvotes to be saved.
+
+
+
