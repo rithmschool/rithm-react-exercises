@@ -80,3 +80,36 @@ function vote(obj) {
     votes: obj.votes
   };
 }
+
+export function removeCommentFromAPI(post_id, comment_id) {
+  return async function(dispatch) {
+    await axios.delete(
+      `http://localhost:3000/api/posts/${post_id}/comments/${comment_id}`
+    );
+    return dispatch(removeComment(post_id, comment_id));
+  };
+}
+
+function removeComment(post_id, comment_id) {
+  return {
+    type: "REMOVE_COMMENT",
+    post_id,
+    comment_id
+  };
+}
+
+export function sendCommentToAPI(post_id, text) {
+  return async function(dispatch) {
+    const result = await axios.post(
+      `http://localhost:3000/api/posts/${post_id}/comments/`,
+      {
+        text
+      }
+    );
+    return dispatch(addComment(post_id, result.data));
+  };
+}
+
+function addComment(post_id, comment) {
+  return { type: "ADD_COMMENT", post_id, comment };
+}

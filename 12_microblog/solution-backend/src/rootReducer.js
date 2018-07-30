@@ -6,7 +6,10 @@ export default function rootReducer(state = INITIAL_STATE, action) {
   if (action.type === "FETCH_POSTS") {
     return { ...state, posts: action.posts };
   } else if (action.type === "ADD_POST") {
-    return { ...state, posts: [...state.posts, action.post] };
+    return {
+      ...state,
+      posts: [...state.posts, { ...action.post, comments: [] }]
+    };
   } else if (action.type === "REMOVE_POST") {
     return {
       ...state,
@@ -28,6 +31,35 @@ export default function rootReducer(state = INITIAL_STATE, action) {
       posts: state.posts.map(post => {
         if (post.id === action.id) {
           return { ...post, votes: action.votes };
+        }
+        return { ...post };
+      })
+    };
+  } else if (action.type === "ADD_COMMENT") {
+    return {
+      ...state,
+      posts: state.posts.map(post => {
+        if (post.id === action.post_id) {
+          debugger;
+          return {
+            ...post,
+            comments: [...post.comments, { ...action.comment }]
+          };
+        }
+        return { ...post };
+      })
+    };
+  } else if (action.type === "REMOVE_COMMENT") {
+    return {
+      ...state,
+      posts: state.posts.map(post => {
+        if (post.id === action.post_id) {
+          return {
+            ...post,
+            comments: post.comments.filter(
+              comment => comment.id !== action.comment_id
+            )
+          };
         }
         return { ...post };
       })

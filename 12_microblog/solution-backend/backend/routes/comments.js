@@ -37,7 +37,7 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/", async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const results = await db.query("DELETE FROM comments WHERE id=$1", [
       req.params.id

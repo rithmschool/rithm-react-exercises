@@ -1,13 +1,19 @@
 import React from "react";
 import "./Post.css";
 import { connect } from "react-redux";
-import { updatePostInAPI, sendVoteToAPI } from "../actionCreators";
+import {
+  updatePostInAPI,
+  sendVoteToAPI,
+  sendCommentToAPI,
+  removeCommentFromAPI
+} from "../actionCreators";
 
 class Post extends React.Component {
   state = {
     isEditing: false,
     title: this.props.post.title,
-    body: this.props.post.body
+    body: this.props.post.body,
+    text: ""
   };
   toggleEdit = () => {
     this.setState(prevState => {
@@ -21,7 +27,8 @@ class Post extends React.Component {
       [evt.target.name]: evt.target.value
     });
   };
-  editPost = () => {
+  editPost = evt => {
+    evt.preventDefault();
     this.props.updatePostInAPI(
       this.props.id,
       this.state.title,
@@ -29,7 +36,26 @@ class Post extends React.Component {
     );
     this.toggleEdit();
   };
+  addComment = evt => {
+    evt.preventDefault();
+    this.props.sendCommentToAPI(this.props.id, this.state.text);
+    this.setState({
+      text: ""
+    });
+  };
   render() {
+    const comments = this.props.comments.map(comment => (
+      <div key={comment.id}>
+        {comment.text}
+        <button
+          onClick={() =>
+            this.props.removeCommentFromAPI(this.props.id, comment.id)
+          }
+        >
+          X
+        </button>
+      </div>
+    ));
     return (
       <div>
         {this.state.isEditing ? (
@@ -54,6 +80,17 @@ class Post extends React.Component {
           </form>
         ) : (
           <div className="Post">
+            <form onSubmit={this.addComment}>
+              <label htmlFor="title">Text:</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                id="text"
+                name="text"
+                value={this.state.text}
+              />
+              <button>Add Comment!</button>
+            </form>
             <button
               onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
             >
@@ -65,6 +102,7 @@ class Post extends React.Component {
               -
             </button>
             <h3>Votes: {this.props.post.votes}</h3>
+            {comments.length > 0 ? comments : null}
             <h3>{this.props.post.title}</h3>
             <div>{this.props.post.body}</div>
             <button onClick={this.toggleEdit}>Edit</button>
@@ -78,5 +116,5 @@ class Post extends React.Component {
 
 export default connect(
   null,
-  { updatePostInAPI, sendVoteToAPI }
+  { updatePostInAPI, sendVoteToAPI, removeCommentFromAPI, sendCommentToAPI }
 )(Post);

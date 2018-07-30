@@ -5,7 +5,12 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const results = await db.query(
-      "SELECT p.id,p.title,p.body,c.id as comment_id, c.text FROM posts p FULL JOIN comments c ON c.post_id = p.id ORDER BY p.id"
+      `SELECT p.id,p.title,p.body,p.votes,c.id as comment_id, c.text 
+        FROM posts p 
+        FULL JOIN comments c 
+        ON c.post_id = p.id 
+      ORDER BY p.id
+      `
     );
     const data = results.rows;
     let counter = data[0].id - 1; // start with lowest id

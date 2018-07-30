@@ -13,6 +13,7 @@ class PostList extends React.Component {
       <div className="PostList">
         {this.props.posts.map(post => (
           <Post
+            comments={post.comments}
             handleRemove={() => this.props.removePostFromAPI(post.id)}
             id={post.id}
             votes={post.votes}
