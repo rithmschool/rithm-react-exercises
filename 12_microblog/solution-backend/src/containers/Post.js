@@ -48,11 +48,12 @@ class Post extends React.Component {
       <div key={comment.id}>
         {comment.text}
         <button
+          className="btn-danger"
           onClick={() =>
             this.props.removeCommentFromAPI(this.props.id, comment.id)
           }
         >
-          X
+          Delete comment
         </button>
       </div>
     ));
@@ -65,18 +66,28 @@ class Post extends React.Component {
             <div>
               <span>Votes: {this.props.post.votes}</span>
               <button
+                className="btn-warning"
                 onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
               >
                 +
               </button>
+              &nbsp;
               <button
+                className="btn-warning"
                 onClick={() => this.props.sendVoteToAPI(this.props.id, "down")}
               >
                 -
               </button>
             </div>
-            <button onClick={this.toggleEdit}>Edit</button>
-            <button onClick={this.props.handleRemove}>X</button>
+            <button className="btn-success" onClick={this.toggleEdit}>
+              Edit Post
+            </button>
+            <button
+              className="btn-danger btn-sm"
+              onClick={this.props.handleRemove}
+            >
+              Delete post
+            </button>
           </div>
         </div>
         {this.state.isEditing ? (
@@ -97,7 +108,7 @@ class Post extends React.Component {
               name="body"
               value={this.state.body}
             />
-            <button>Edit!</button>
+            <button className="btn-success">Update!</button>
           </form>
         ) : null}
         <div>
@@ -113,7 +124,7 @@ class Post extends React.Component {
             name="text"
             value={this.state.text}
           />
-          <button>Add Comment!</button>
+          <button className="btn-success">Add Comment!</button>
         </form>
       </div>
     );
