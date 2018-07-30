@@ -11,21 +11,27 @@ class App extends Component {
         <div className="container">
           <Link to="/posts/new">Add a new post</Link> | &nbsp;
           <Link to="/">Go Home</Link>
-          <Switch>
-            <Route exact path="/posts/new" component={NewPostForm} />
-          </Switch>
           <header className="App-header jumbotron">
             <h1 className="App-title display-4">Microblog</h1>
             <p className="lead">Get in the Rithm of blogging!</p>
           </header>
-          <div className="row">
-            <div className="col-sm">
-              <TitleList />
-            </div>
-            <div className="col-sm">
-              <PostList />
-            </div>
-          </div>
+          <Switch>
+            <Route exact path="/posts/new" component={NewPostForm} />
+            <Route
+              exact
+              path="/"
+              component={() => (
+                <div className="row">
+                  <div className="col-sm">
+                    <TitleList />
+                  </div>
+                  <div className="col-sm">
+                    <PostList />
+                  </div>
+                </div>
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );
