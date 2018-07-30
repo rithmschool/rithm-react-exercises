@@ -40,7 +40,6 @@ export default function rootReducer(state = INITIAL_STATE, action) {
       ...state,
       posts: state.posts.map(post => {
         if (post.id === action.post_id) {
-          debugger;
           return {
             ...post,
             comments: [...post.comments, { ...action.comment }]
