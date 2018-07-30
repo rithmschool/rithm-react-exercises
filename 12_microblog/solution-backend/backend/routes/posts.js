@@ -12,9 +12,12 @@ router.get("/", async (req, res, next) => {
       ORDER BY p.id
       `
     );
-    const data = results.rows;
-    let counter = data[0].id - 1; // start with lowest id
     let finalResult = [];
+    const data = results.rows;
+    if (results.rows.length === 0) {
+      return res.status(200).json(finalResult);
+    }
+    let counter = data[0].id - 1; // start with lowest id
     for (let i = 0; i < data.length; i++) {
       let currentPost = results.rows[i];
       if (counter !== currentPost.id) {

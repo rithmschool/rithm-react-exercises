@@ -11,9 +11,7 @@ class PostList extends React.Component {
   render() {
     return (
       <div className="PostList">
-        {this.props.posts.map(post => (
-          <Post id={post.id} key={post.id} post={post} />
-        ))}
+        {this.props.posts.map(post => <Post key={post.id} post={post} />)}
       </div>
     );
   }

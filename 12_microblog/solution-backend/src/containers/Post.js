@@ -31,7 +31,7 @@ class Post extends React.Component {
   editPost = evt => {
     evt.preventDefault();
     this.props.updatePostInAPI(
-      this.props.id,
+      this.props.post.id,
       this.state.title,
       this.state.body
     );
@@ -51,7 +51,7 @@ class Post extends React.Component {
         <button
           className="btn-danger"
           onClick={() =>
-            this.props.removeCommentFromAPI(this.props.id, comment.id)
+            this.props.removeCommentFromAPI(this.props.post.id, comment.id)
           }
         >
           Delete comment
@@ -68,14 +68,18 @@ class Post extends React.Component {
               <span>Votes: {this.props.post.votes}</span>
               <button
                 className="btn-warning"
-                onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
+                onClick={() =>
+                  this.props.sendVoteToAPI(this.props.post.id, "up")
+                }
               >
                 +
               </button>
               &nbsp;
               <button
                 className="btn-warning"
-                onClick={() => this.props.sendVoteToAPI(this.props.id, "down")}
+                onClick={() =>
+                  this.props.sendVoteToAPI(this.props.post.id, "down")
+                }
               >
                 -
               </button>
@@ -85,7 +89,7 @@ class Post extends React.Component {
             </button>
             <button
               className="btn-danger btn-sm"
-              onClick={() => this.props.removePostFromAPI(this.props.id)}
+              onClick={() => this.props.removePostFromAPI(this.props.post.id)}
             >
               Delete post
             </button>
