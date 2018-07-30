@@ -58,6 +58,38 @@ class Post extends React.Component {
     ));
     return (
       <div>
+        <div className="Post">
+          <form onSubmit={this.addComment}>
+            <label htmlFor="title">Text:</label>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              id="text"
+              name="text"
+              value={this.state.text}
+            />
+            <button>Add Comment!</button>
+          </form>
+          <div>
+            <h3>Title: {this.props.post.title}</h3>
+            <h4>Body: {this.props.post.body}</h4>
+            <div>
+              <span>Votes: {this.props.post.votes}</span>
+              <button
+                onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
+              >
+                +
+              </button>
+              <button
+                onClick={() => this.props.sendVoteToAPI(this.props.id, "down")}
+              >
+                -
+              </button>
+            </div>
+            <button onClick={this.toggleEdit}>Edit</button>
+            <button onClick={this.props.handleRemove}>X</button>
+          </div>
+        </div>
         {this.state.isEditing ? (
           <form onSubmit={this.editPost}>
             <label htmlFor="title">Title:</label>
@@ -78,37 +110,11 @@ class Post extends React.Component {
             />
             <button>Edit!</button>
           </form>
-        ) : (
-          <div className="Post">
-            <form onSubmit={this.addComment}>
-              <label htmlFor="title">Text:</label>
-              <input
-                type="text"
-                onChange={this.handleChange}
-                id="text"
-                name="text"
-                value={this.state.text}
-              />
-              <button>Add Comment!</button>
-            </form>
-            <button
-              onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
-            >
-              +
-            </button>
-            <button
-              onClick={() => this.props.sendVoteToAPI(this.props.id, "down")}
-            >
-              -
-            </button>
-            <h3>Votes: {this.props.post.votes}</h3>
-            {comments.length > 0 ? comments : null}
-            <h3>{this.props.post.title}</h3>
-            <div>{this.props.post.body}</div>
-            <button onClick={this.toggleEdit}>Edit</button>
-            <button onClick={this.props.handleRemove}>X</button>
-          </div>
-        )}
+        ) : null}
+        <div>
+          Comments:
+          {comments.length > 0 ? comments : null}
+        </div>
       </div>
     );
   }
