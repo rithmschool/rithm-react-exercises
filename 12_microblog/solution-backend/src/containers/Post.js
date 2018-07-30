@@ -59,17 +59,6 @@ class Post extends React.Component {
     return (
       <div>
         <div className="Post">
-          <form onSubmit={this.addComment}>
-            <label htmlFor="title">Text:</label>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              id="text"
-              name="text"
-              value={this.state.text}
-            />
-            <button>Add Comment!</button>
-          </form>
           <div>
             <h3>Title: {this.props.post.title}</h3>
             <h4>Body: {this.props.post.body}</h4>
@@ -115,6 +104,17 @@ class Post extends React.Component {
           Comments:
           {comments.length > 0 ? comments : null}
         </div>
+        <form onSubmit={this.addComment}>
+          <label htmlFor="title">Text:</label>
+          <input
+            type="text"
+            onChange={this.handleChange}
+            id="text"
+            name="text"
+            value={this.state.text}
+          />
+          <button>Add Comment!</button>
+        </form>
       </div>
     );
   }
