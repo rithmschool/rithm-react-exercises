@@ -22,6 +22,16 @@ export default function rootReducer(state = INITIAL_STATE, action) {
         return { ...post };
       })
     };
+  } else if (action.type === "VOTE") {
+    return {
+      ...state,
+      posts: state.posts.map(post => {
+        if (post.id === action.id) {
+          return { ...post, votes: action.votes };
+        }
+        return { ...post };
+      })
+    };
   }
   return state;
 }

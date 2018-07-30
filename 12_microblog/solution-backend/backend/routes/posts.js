@@ -4,8 +4,51 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const results = await db.query("SELECT * FROM posts");
-    return res.status(200).json(results.rows);
+    const results = await db.query(
+      "SELECT p.id,p.title,p.body,c.id as comment_id, c.text FROM posts p FULL JOIN comments c ON c.post_id = p.id ORDER BY p.id"
+    );
+    const data = results.rows;
+    let counter = data[0].id - 1; // start with lowest id
+    let finalResult = [];
+    for (let i = 0; i < data.length; i++) {
+      let currentPost = results.rows[i];
+      if (counter !== currentPost.id) {
+        counter = currentPost.id;
+        currentPost.comments = [];
+        if (currentPost.text !== null && currentPost.comment_id !== null) {
+          currentPost.comments.push({
+            text: currentPost.text,
+            id: currentPost.comment_id
+          });
+        }
+        delete currentPost.text;
+        delete currentPost.comment_id;
+        finalResult.push(currentPost);
+      } else {
+        finalResult[currentPost.id - counter].comments.push({
+          text: currentPost.text,
+          id: currentPost.comment_id
+        });
+      }
+    }
+    return res.status(200).json(finalResult);
+  } catch (e) {
+    return next(e);
+  }
+});
+
+router.post("/:id/vote/:direction", async (req, res, next) => {
+  try {
+    let query = "";
+    if (req.params.direction === "up") {
+      query = "UPDATE posts SET votes = votes + 1 WHERE id=$1 RETURNING *";
+    } else {
+      query = "UPDATE posts SET votes = votes - 1 WHERE id=$1 RETURNING *";
+    }
+
+    const results = await db.query(query, [req.params.id]);
+
+    return res.status(200).json(results.rows[0]);
   } catch (e) {
     return next(e);
   }

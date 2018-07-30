@@ -1,7 +1,7 @@
 import React from "react";
 import "./Post.css";
 import { connect } from "react-redux";
-import { updatePostInAPI } from "../actionCreators";
+import { updatePostInAPI, sendVoteToAPI } from "../actionCreators";
 
 class Post extends React.Component {
   state = {
@@ -54,6 +54,17 @@ class Post extends React.Component {
           </form>
         ) : (
           <div className="Post">
+            <button
+              onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
+            >
+              +
+            </button>
+            <button
+              onClick={() => this.props.sendVoteToAPI(this.props.id, "down")}
+            >
+              -
+            </button>
+            <h3>Votes: {this.props.post.votes}</h3>
             <h3>{this.props.post.title}</h3>
             <div>{this.props.post.body}</div>
             <button onClick={this.toggleEdit}>Edit</button>
@@ -67,5 +78,5 @@ class Post extends React.Component {
 
 export default connect(
   null,
-  { updatePostInAPI }
+  { updatePostInAPI, sendVoteToAPI }
 )(Post);

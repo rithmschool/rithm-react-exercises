@@ -15,6 +15,7 @@ class PostList extends React.Component {
           <Post
             handleRemove={() => this.props.removePostFromAPI(post.id)}
             id={post.id}
+            votes={post.votes}
             key={post.id}
             post={post}
           />

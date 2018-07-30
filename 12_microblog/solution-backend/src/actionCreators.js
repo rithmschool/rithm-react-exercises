@@ -63,3 +63,20 @@ function updatePost(id, title, body) {
     body
   };
 }
+
+export function sendVoteToAPI(id, direction) {
+  return async function(dispatch) {
+    const response = await axios.post(
+      `http://localhost:3000/api/posts/${id}/vote/${direction}`
+    );
+    return dispatch(vote(response.data));
+  };
+}
+
+function vote(obj) {
+  return {
+    type: "VOTE",
+    id: obj.id,
+    votes: obj.votes
+  };
+}
