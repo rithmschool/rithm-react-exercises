@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import { connect } from "react-redux";
-import { getPostsFromAPI, removePostFromAPI } from "../actionCreators";
+import { getPostsFromAPI } from "../actionCreators";
 
 class PostList extends React.Component {
   componentDidMount() {
@@ -12,13 +12,7 @@ class PostList extends React.Component {
     return (
       <div className="PostList">
         {this.props.posts.map(post => (
-          <Post
-            comments={post.comments}
-            handleRemove={() => this.props.removePostFromAPI(post.id)}
-            id={post.id}
-            key={post.id}
-            post={post}
-          />
+          <Post id={post.id} key={post.id} post={post} />
         ))}
       </div>
     );
@@ -33,5 +27,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getPostsFromAPI, removePostFromAPI }
+  { getPostsFromAPI }
 )(PostList);

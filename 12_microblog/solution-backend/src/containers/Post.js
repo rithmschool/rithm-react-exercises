@@ -5,7 +5,8 @@ import {
   updatePostInAPI,
   sendVoteToAPI,
   sendCommentToAPI,
-  removeCommentFromAPI
+  removeCommentFromAPI,
+  removePostFromAPI
 } from "../actionCreators";
 
 class Post extends React.Component {
@@ -44,7 +45,7 @@ class Post extends React.Component {
     });
   };
   render() {
-    const comments = this.props.comments.map(comment => (
+    const comments = this.props.post.comments.map(comment => (
       <div key={comment.id}>
         {comment.text}
         <button
@@ -84,7 +85,7 @@ class Post extends React.Component {
             </button>
             <button
               className="btn-danger btn-sm"
-              onClick={this.props.handleRemove}
+              onClick={() => this.props.removePostFromAPI(this.props.id)}
             >
               Delete post
             </button>
@@ -133,5 +134,11 @@ class Post extends React.Component {
 
 export default connect(
   null,
-  { updatePostInAPI, sendVoteToAPI, removeCommentFromAPI, sendCommentToAPI }
+  {
+    updatePostInAPI,
+    sendVoteToAPI,
+    removeCommentFromAPI,
+    sendCommentToAPI,
+    removePostFromAPI
+  }
 )(Post);
