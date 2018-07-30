@@ -44,3 +44,22 @@ function removePost(id) {
     id
   };
 }
+
+export function updatePostInAPI(id, title, body) {
+  return async function(dispatch) {
+    await axios.patch(`http://localhost:3000/api/posts/${id}`, {
+      title,
+      body
+    });
+    return dispatch(updatePost(id, title, body));
+  };
+}
+
+function updatePost(id, title, body) {
+  return {
+    type: "UPDATE_POST",
+    id,
+    title,
+    body
+  };
+}

@@ -12,6 +12,16 @@ export default function rootReducer(state = INITIAL_STATE, action) {
       ...state,
       posts: state.posts.filter(post => post.id !== action.id)
     };
+  } else if (action.type === "UPDATE_POST") {
+    return {
+      ...state,
+      posts: state.posts.map(post => {
+        if (post.id === action.id) {
+          return { ...post, title: action.title, body: action.body };
+        }
+        return { ...post };
+      })
+    };
   }
   return state;
 }
