@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import './App.css';
-import PostList from './PostList';
-import TitleList from './TitleList';
-import NewPostForm from './NewPostForm';
+import React, { Component } from "react";
+import "./App.css";
+import PostList from "./PostList";
+import TitleList from "./TitleList";
+import NewPostForm from "./NewPostForm";
 
 class App extends Component {
   state = {
     posts: [
       { title: "Why Does the Sun Shine?", body: "Blah blah blah" },
-      { title: "Why Is the Sky Blue?", body: "Blah blah blah" },
-    ],
-  }
+      { title: "Why Is the Sky Blue?", body: "Blah blah blah" }
+    ]
+  };
 
   handleAdd = (title, body) => {
-    this.setState(state => (
-      { posts: [...state.posts, { title: title, body: body }] }
-    ))
-  }
+    this.setState(state => ({
+      posts: [...state.posts, { title, body }]
+    }));
+  };
 
   render() {
     return (
@@ -24,7 +24,7 @@ class App extends Component {
         <div className="container">
           <header className="App-header jumbotron">
             <h1 className="App-title display-4">Microblog</h1>
-            <p class="lead">Get in the Rithm of blogging!</p>
+            <p className="lead">Get in the Rithm of blogging!</p>
           </header>
           <div className="row">
             <div className="col-sm">
