@@ -1,5 +1,5 @@
-import React from 'react';
-import './Post.css';
+import React from "react";
+import "./Post.css";
 
 class Post extends React.Component {
   render() {
@@ -7,8 +7,9 @@ class Post extends React.Component {
       <div className="Post">
         <h3>{this.props.post.title}</h3>
         <div>{this.props.post.body}</div>
+        <button onClick={this.props.handleRemove}>X</button>
       </div>
-    )
+    );
   }
 }
 
