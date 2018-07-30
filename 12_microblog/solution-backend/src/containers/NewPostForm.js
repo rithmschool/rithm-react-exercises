@@ -14,6 +14,7 @@ class NewPostForm extends React.Component {
     e.preventDefault();
     this.props.sendPostToAPI(this.state.title, this.state.body);
     this.setState({ title: "", body: "" });
+    this.props.history.push("/");
   };
 
   render() {

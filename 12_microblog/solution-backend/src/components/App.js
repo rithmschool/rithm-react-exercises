@@ -3,12 +3,17 @@ import "./App.css";
 import PostList from "../containers/PostList";
 import TitleList from "../containers/TitleList";
 import NewPostForm from "../containers/NewPostForm";
-
+import { Route, Link, Switch } from "react-router-dom";
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="container">
+          <Link to="/posts/new">Add a new post</Link> | &nbsp;
+          <Link to="/">Go Home</Link>
+          <Switch>
+            <Route exact path="/posts/new" component={NewPostForm} />
+          </Switch>
           <header className="App-header jumbotron">
             <h1 className="App-title display-4">Microblog</h1>
             <p className="lead">Get in the Rithm of blogging!</p>
@@ -19,7 +24,6 @@ class App extends Component {
             </div>
             <div className="col-sm">
               <PostList />
-              <NewPostForm />
             </div>
           </div>
         </div>
