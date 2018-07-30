@@ -11,9 +11,7 @@ class TitleList extends React.Component {
           {this.props.posts.map(post => (
             <li key={post.id} className="list-group-item">
               {post.title}
-              <button
-                onClick={() => this.props.dispatch(removePostFromAPI(post.id))}
-              >
+              <button onClick={() => this.props.removePostFromAPI(post.id)}>
                 X
               </button>
             </li>
@@ -30,4 +28,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TitleList);
+export default connect(
+  mapStateToProps,
+  { removePostFromAPI }
+)(TitleList);

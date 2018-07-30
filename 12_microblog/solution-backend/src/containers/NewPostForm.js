@@ -6,17 +6,13 @@ import { sendPostToAPI } from "../actionCreators";
 class NewPostForm extends React.Component {
   state = { title: "", body: "" };
 
-  onTitleChange = e => {
-    this.setState({ title: e.target.value });
-  };
-
-  onBodyChange = e => {
-    this.setState({ body: e.target.value });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.dispatch(sendPostToAPI(this.state.title, this.state.body));
+    this.props.sendPostToAPI(this.state.title, this.state.body);
     this.setState({ title: "", body: "" });
   };
 
@@ -28,16 +24,18 @@ class NewPostForm extends React.Component {
           <input
             className="form-control"
             type="text"
+            name="title"
             value={this.state.title}
-            onChange={this.onTitleChange}
+            onChange={this.handleChange}
           />
         </div>
         <div className="form-group">
           <label>Body:</label>
           <textarea
             className="form-control"
+            name="body"
             value={this.state.body}
-            onChange={this.onBodyChange}
+            onChange={this.handleChange}
           />
         </div>
         <div className="form-group">
@@ -48,4 +46,7 @@ class NewPostForm extends React.Component {
   }
 }
 
-export default connect()(NewPostForm);
+export default connect(
+  null,
+  { sendPostToAPI }
+)(NewPostForm);
