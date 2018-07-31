@@ -11,7 +11,9 @@ class PostList extends React.Component {
   render() {
     return (
       <div className="PostList">
-        {this.props.posts.map(post => <Post key={post.id} post={post} />)}
+        {[...this.props.posts]
+          .sort((a, b) => a.votes < b.votes)
+          .map(post => <Post key={post.id} post={post} />)}
       </div>
     );
   }
