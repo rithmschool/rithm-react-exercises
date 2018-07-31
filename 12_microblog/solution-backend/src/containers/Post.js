@@ -16,6 +16,7 @@ class Post extends React.Component {
     body: this.props.post.body,
     text: ""
   };
+
   toggleEdit = () => {
     this.setState(prevState => {
       return {
@@ -23,11 +24,13 @@ class Post extends React.Component {
       };
     });
   };
+
   handleChange = evt => {
     this.setState({
       [evt.target.name]: evt.target.value
     });
   };
+
   editPost = evt => {
     evt.preventDefault();
     this.props.updatePostInAPI(
@@ -37,6 +40,7 @@ class Post extends React.Component {
     );
     this.toggleEdit();
   };
+
   addComment = evt => {
     evt.preventDefault();
     this.props.sendCommentToAPI(this.props.id, this.state.text);
@@ -44,6 +48,7 @@ class Post extends React.Component {
       text: ""
     });
   };
+
   render() {
     const comments = this.props.post.comments.map(comment => (
       <div key={comment.id}>
@@ -131,6 +136,43 @@ class Post extends React.Component {
           />
           <button className="btn-success">Add Comment!</button>
         </form>
+        {/* ) : (
+          <div className="Post">
+            <div class="Post-info">
+              <div>
+                <h3>{this.props.post.title}</h3>
+                <div>{this.props.post.body}</div>
+              </div>
+              <div>
+                <h3>Votes: {this.props.post.votes}</h3>
+                <i
+                  className="fa fa-thumbs-up"
+                  onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
+                />
+                <i
+                  className="fa fa-thumbs-down"
+                  onClick={() =>
+                    this.props.sendVoteToAPI(this.props.id, "down")
+                  }
+                />
+              </div>
+            </div>
+            <form onSubmit={this.addComment}>
+              <label htmlFor="title">Text:</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                id="text"
+                name="text"
+                value={this.state.text}
+              />
+              <button>Add Comment!</button>
+            </form>
+            {comments.length > 0 ? comments : null}
+            <button onClick={this.toggleEdit}>Edit</button>
+            <button onClick={this.props.handleRemove}>X</button>
+          </div>
+        )} */}
       </div>
     );
   }

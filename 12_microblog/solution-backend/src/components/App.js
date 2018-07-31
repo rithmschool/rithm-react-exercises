@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 import PostList from "../containers/PostList";
 import TitleList from "../containers/TitleList";
 import NewPostForm from "../containers/NewPostForm";
