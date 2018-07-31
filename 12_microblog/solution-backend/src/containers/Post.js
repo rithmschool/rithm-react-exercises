@@ -43,7 +43,7 @@ class Post extends React.Component {
 
   addComment = evt => {
     evt.preventDefault();
-    this.props.sendCommentToAPI(this.props.id, this.state.text);
+    this.props.sendCommentToAPI(this.props.post.id, this.state.text);
     this.setState({
       text: ""
     });
@@ -53,110 +53,74 @@ class Post extends React.Component {
     const comments = this.props.post.comments.map(comment => (
       <div key={comment.id}>
         {comment.text}
-        <button
-          className="btn-danger"
+        <i
+          className="fa fa-times text-danger ml-1"
           onClick={() =>
             this.props.removeCommentFromAPI(this.props.post.id, comment.id)
           }
-        >
-          Delete comment
-        </button>
+        />
       </div>
     ));
     return (
       <div>
         <div className="Post">
-          <div>
-            <h3>Title: {this.props.post.title}</h3>
-            <h4>Body: {this.props.post.body}</h4>
+          {this.state.isEditing ? (
+            <form onSubmit={this.editPost}>
+              <label htmlFor="title">Title:</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                id="title"
+                name="title"
+                value={this.state.title}
+              />
+              <label htmlFor="body">Body:</label>
+              <input
+                type="text"
+                onChange={this.handleChange}
+                id="body"
+                name="body"
+                value={this.state.body}
+              />
+              <button className="btn-success">Update!</button>
+            </form>
+          ) : null}
+          <div className="Post-section">
             <div>
-              <span>Votes: {this.props.post.votes}</span>
-              <button
-                className="btn-warning"
+              <h3>{this.props.post.title}</h3>
+              <div>{this.props.post.body}</div>
+            </div>
+            <div>
+              <i
+                className="fas fa-edit fa-2x text-primary"
+                onClick={this.toggleEdit}
+              />
+              <i
+                className="fas fa-times fa-2x text-danger"
+                onClick={this.props.handleRemove}
+              />
+            </div>
+          </div>
+          <div className="Post-section">
+            <h3>Votes: {this.props.post.votes}</h3>
+            <div>
+              <i
+                className="fas fa-thumbs-up fa-2x text-success"
                 onClick={() =>
                   this.props.sendVoteToAPI(this.props.post.id, "up")
                 }
-              >
-                +
-              </button>
-              &nbsp;
-              <button
-                className="btn-warning"
+              />
+              <i
+                className="fas fa-thumbs-down fa-2x text-danger"
                 onClick={() =>
                   this.props.sendVoteToAPI(this.props.post.id, "down")
                 }
-              >
-                -
-              </button>
+              />
             </div>
-            <button className="btn-success" onClick={this.toggleEdit}>
-              Edit Post
-            </button>
-            <button
-              className="btn-danger btn-sm"
-              onClick={() => this.props.removePostFromAPI(this.props.post.id)}
-            >
-              Delete post
-            </button>
           </div>
-        </div>
-        {this.state.isEditing ? (
-          <form onSubmit={this.editPost}>
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              id="title"
-              name="title"
-              value={this.state.title}
-            />
-            <label htmlFor="body">Body:</label>
-            <input
-              type="text"
-              onChange={this.handleChange}
-              id="body"
-              name="body"
-              value={this.state.body}
-            />
-            <button className="btn-success">Update!</button>
-          </form>
-        ) : null}
-        <div>
-          Comments:
-          {comments.length > 0 ? comments : null}
-        </div>
-        <form onSubmit={this.addComment}>
-          <label htmlFor="title">Text:</label>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            id="text"
-            name="text"
-            value={this.state.text}
-          />
-          <button className="btn-success">Add Comment!</button>
-        </form>
-        {/* ) : (
-          <div className="Post">
-            <div class="Post-info">
-              <div>
-                <h3>{this.props.post.title}</h3>
-                <div>{this.props.post.body}</div>
-              </div>
-              <div>
-                <h3>Votes: {this.props.post.votes}</h3>
-                <i
-                  className="fa fa-thumbs-up"
-                  onClick={() => this.props.sendVoteToAPI(this.props.id, "up")}
-                />
-                <i
-                  className="fa fa-thumbs-down"
-                  onClick={() =>
-                    this.props.sendVoteToAPI(this.props.id, "down")
-                  }
-                />
-              </div>
-            </div>
+          <div className="Post-section">
+            Comments:
+            {comments.length > 0 ? comments : null}
             <form onSubmit={this.addComment}>
               <label htmlFor="title">Text:</label>
               <input
@@ -166,13 +130,10 @@ class Post extends React.Component {
                 name="text"
                 value={this.state.text}
               />
-              <button>Add Comment!</button>
+              <button className="btn-success">Add Comment!</button>
             </form>
-            {comments.length > 0 ? comments : null}
-            <button onClick={this.toggleEdit}>Edit</button>
-            <button onClick={this.props.handleRemove}>X</button>
           </div>
-        )} */}
+        </div>
       </div>
     );
   }

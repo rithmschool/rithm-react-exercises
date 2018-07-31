@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "./TitleList.css";
 import { removePostFromAPI } from "../actionCreators";
 
 class TitleList extends React.Component {
@@ -11,9 +12,10 @@ class TitleList extends React.Component {
           {this.props.posts.map(post => (
             <li key={post.id} className="list-group-item">
               {post.title}
-              <button onClick={() => this.props.removePostFromAPI(post.id)}>
-                X
-              </button>
+              <i
+                className="fas fa-times fa-2x ml-auto text-danger"
+                onClick={() => this.props.removePostFromAPI(post.id)}
+              />
             </li>
           ))}
         </ul>

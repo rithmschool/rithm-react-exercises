@@ -2,10 +2,19 @@
   margin-bottom: 1.5em;
   border: 1px solid #ccc;
   border-radius: 0.25em;
+}
+
+.Post > form {
   padding: 1em;
 }
 
-.Post-info {
+.Post-section {
+  padding: 1em;
+}
+
+.Post-section:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
   display: flex;
   justify-content: space-between;
 }
@@ -14,10 +23,6 @@ i:hover {
   cursor: pointer;
 }
 
-.fa-thumbs-up {
-  color: #00d914;
-}
-
-.fa-thumbs-down {
-  color: #d30037;
+.fas {
+  margin-left: 0.25em;
 }
