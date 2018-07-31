@@ -20,5 +20,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d build"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0"
   }
 }
