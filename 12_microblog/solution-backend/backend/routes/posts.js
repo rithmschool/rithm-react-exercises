@@ -12,6 +12,7 @@ router.get("/", async (req, res, next) => {
       ORDER BY p.id
       `
     );
+    let offset = -1; // offset for each subarray of comments
     let finalResult = [];
     const data = results.rows;
     if (results.rows.length === 0) {
@@ -32,8 +33,9 @@ router.get("/", async (req, res, next) => {
         delete currentPost.text;
         delete currentPost.comment_id;
         finalResult.push(currentPost);
+        offset++;
       } else {
-        finalResult[currentPost.id - counter].comments.push({
+        finalResult[offset].comments.push({
           text: currentPost.text,
           id: currentPost.comment_id
         });
