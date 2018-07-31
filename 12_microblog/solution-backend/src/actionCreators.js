@@ -1,4 +1,13 @@
 import axios from "axios";
+import {
+  FETCH_POSTS,
+  REMOVE_POST,
+  ADD_POST,
+  UPDATE_POST,
+  VOTE,
+  ADD_COMMENT,
+  REMOVE_COMMENT
+} from "./actionTypes";
 
 export function getPostsFromAPI() {
   return async function(dispatch) {
@@ -9,7 +18,7 @@ export function getPostsFromAPI() {
 
 function getPosts(posts) {
   return {
-    type: "FETCH_POSTS",
+    type: FETCH_POSTS,
     posts
   };
 }
@@ -26,7 +35,7 @@ export function sendPostToAPI(title, body) {
 
 function addPost(post) {
   return {
-    type: "ADD_POST",
+    type: ADD_POST,
     post
   };
 }
@@ -40,7 +49,7 @@ export function removePostFromAPI(id) {
 
 function removePost(id) {
   return {
-    type: "REMOVE_POST",
+    type: REMOVE_POST,
     id
   };
 }
@@ -57,7 +66,7 @@ export function updatePostInAPI(id, title, body) {
 
 function updatePost(id, title, body) {
   return {
-    type: "UPDATE_POST",
+    type: UPDATE_POST,
     id,
     title,
     body
@@ -75,7 +84,7 @@ export function sendVoteToAPI(id, direction) {
 
 function vote(obj) {
   return {
-    type: "VOTE",
+    type: VOTE,
     id: obj.id,
     votes: obj.votes
   };
@@ -92,7 +101,7 @@ export function removeCommentFromAPI(post_id, comment_id) {
 
 function removeComment(post_id, comment_id) {
   return {
-    type: "REMOVE_COMMENT",
+    type: REMOVE_COMMENT,
     post_id,
     comment_id
   };
@@ -111,5 +120,5 @@ export function sendCommentToAPI(post_id, text) {
 }
 
 function addComment(post_id, comment) {
-  return { type: "ADD_COMMENT", post_id, comment };
+  return { type: ADD_COMMENT, post_id, comment };
 }
