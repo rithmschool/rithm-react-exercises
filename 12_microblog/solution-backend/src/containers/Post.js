@@ -97,7 +97,7 @@ class Post extends React.Component {
               />
               <i
                 className="fas fa-times fa-2x text-danger"
-                onClick={this.props.handleRemove}
+                onClick={() => this.props.removePostFromAPI(this.props.post.id)}
               />
             </div>
           </div>
